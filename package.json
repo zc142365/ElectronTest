@@ -1,0 +1,47 @@
+{
+  "name": "electron-test",
+  "version": "1.0.0",
+  "description": "electron-test",
+  "main": "index.js",
+  "author": "zc142365@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "electron": "^24.3.0",
+    "electron-builder": "^23.6.0"
+  },
+  "build": {
+    "appId": "electron-test",
+    "dmg": {
+      "title": "electron-test 1.0.0"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": [
+        "zip",
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "createDesktopShortcut": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "scripts": {
+    "start": "electron .",
+    "build:mac": "electron-builder --mac",
+    "build:linux": "yarn run build:linux32 && yarn run build:linux64",
+    "build:win": "yarn run build:win32 && yarn run build:win64",
+    "build:linux32": "electron-builder --linux --ia32",
+    "build:linux64": "electron-builder --linux --x64",
+    "build:win32": "electron-builder --win --ia32",
+    "build:win64": "electron-builder --win --x64"
+  }
+}
